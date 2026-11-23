@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>naMari moda feminina · Catálogo</title>
 <meta name="description" content="Catálogo da naMari moda feminina. Preço fixo: R$ 30, 40, 60 e 90. Escolha as peças e faça o pedido pelo WhatsApp.">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#f5cdd7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="naMari moda feminina · Catálogo">
 <meta property="og:description" content="Preço fixo: R$ 30, 40, 60 e 90. Escolha e peça pelo WhatsApp.">
@@ -16,26 +16,27 @@
   /* 🪟 Vitrinista da naMari. Tudo nasce da logo: preto e branco, letra de máquina de escrever e o coração vermelho.
      Etiquetas de roupa (valor), fitinhas de rotulador (categorias) e a sacola em forma de notinha. */
   :root {
-    --papel: #ffffff; --tinta: #141414; --suave: #6e6e6e; --fio: #e4e4e4; --cinza: #f5f4f2;
+    --papel: #ffffff; --tinta: #141414; --suave: #765a62; --fio: #eec3cd; --cinza: #f5f4f2;
+    --parede: #fbe4e9; --parede-forte: #f5cdd7; /* o rosa da parede da loja */
     --botao: #141414; --botao-texto: #ffffff; --coracao: #d7192a;
-    --fita: #141414; --fita-texto: #ffffff; --fita-off: #f1f0ee; --fita-off-texto: #141414;
+    --fita: #141414; --fita-texto: #ffffff; --fita-off: #ffffff; --fita-off-texto: #141414;
     --mono: "Courier Prime", "Courier New", monospace; color-scheme: light;
   }
   @media (prefers-color-scheme: dark) {
-    :root { --papel: #121212; --tinta: #f3f3f3; --suave: #a5a5a5; --fio: #2a2a2a; --cinza: #1c1c1c;
+    :root { --papel: #1b1417; --tinta: #f6eef0; --suave: #b9a2a9; --fio: #3a2a30; --cinza: #241a1e; --parede: #140e10; --parede-forte: #3b2129;
       --botao: #f3f3f3; --botao-texto: #121212; --coracao: #ff4d5b;
-      --fita: #f3f3f3; --fita-texto: #121212; --fita-off: #222; --fita-off-texto: #f3f3f3; color-scheme: dark; }
+      --fita: #f3f3f3; --fita-texto: #121212; --fita-off: #2a1e23; --fita-off-texto: #f3f3f3; color-scheme: dark; }
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html { -webkit-text-size-adjust: 100%; }
-  body { margin: 0; background: var(--papel); color: var(--tinta); font: 15.5px/1.45 "Work Sans", system-ui, -apple-system, sans-serif; padding-bottom: 92px; }
+  body { margin: 0; background: var(--parede); color: var(--tinta); font: 15.5px/1.45 "Work Sans", system-ui, -apple-system, sans-serif; padding-bottom: 92px; }
   button { font: inherit; color: inherit; }
   a { color: inherit; }
   .mono { font-family: var(--mono); }
   .coracao { fill: var(--coracao); }
 
   /* ---------- topo: a logo ---------- */
-  header { text-align: center; padding: 34px 16px 0; }
+  header { text-align: center; padding: 34px 16px 0; background: var(--parede-forte); }
   .logo { margin: 0; font: 700 clamp(52px, 16vw, 78px)/1 var(--mono); letter-spacing: -.035em; }
   .logo .i { position: relative; display: inline-block; }
   .logo .i::before { content: "ı"; }
@@ -47,14 +48,14 @@
   @keyframes cursor { 50% { opacity: 0; } }
 
   /* faixa "preço fixo", como fita de rotulador */
-  .faixa { margin: 22px -16px 0; border-top: 1.5px solid var(--tinta); border-bottom: 1.5px solid var(--tinta); overflow: hidden; white-space: nowrap; padding: 8px 0; font: 700 14px var(--mono); letter-spacing: .08em; }
+  .faixa { background: var(--papel); margin: 22px -16px 0; border-top: 1.5px solid var(--tinta); border-bottom: 1.5px solid var(--tinta); overflow: hidden; white-space: nowrap; padding: 8px 0; font: 700 14px var(--mono); letter-spacing: .08em; }
   .faixa div { display: inline-block; animation: corre 22s linear infinite; }
   .faixa span { margin: 0 14px; }
   .faixa svg { width: 11px; vertical-align: -1px; }
   @keyframes corre { to { transform: translateX(-50%); } }
 
   /* ---------- abas ---------- */
-  .abas { position: sticky; top: 0; z-index: 10; background: var(--papel); border-bottom: 1px solid var(--fio); }
+  .abas { position: sticky; top: 0; z-index: 10; background: var(--parede); border-bottom: 1px solid var(--fio); }
   .rolagem { display: flex; justify-content: safe center; overflow-x: auto; scrollbar-width: none; max-width: 1100px; margin: 0 auto; padding: 0 6px; }
   .rolagem::-webkit-scrollbar { display: none; }
   .aba { flex: none; position: relative; background: none; border: 0; padding: 15px 13px 14px; font: 400 15px var(--mono); color: var(--suave); cursor: pointer; }
@@ -135,7 +136,7 @@
   @keyframes pisca { to { opacity: .45; } }
   .voa { position: fixed; z-index: 50; width: 22px; pointer-events: none; }
 
-  footer { border-top: 1.5px solid var(--tinta); text-align: center; padding: 30px 16px 28px; font: 400 14px/1.9 var(--mono); }
+  footer { background: var(--parede-forte); border-top: 1.5px solid var(--tinta); text-align: center; padding: 30px 16px 28px; font: 400 14px/1.9 var(--mono); }
   footer .logo { font-size: 30px; }
   footer a { text-decoration: none; }
   footer a:hover { text-decoration: underline; }
