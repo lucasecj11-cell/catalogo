@@ -3,142 +3,316 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Namari · Catálogo</title>
-<meta name="description" content="Catálogo da Namari, moda feminina. Escolha a peça e fale com a gente no WhatsApp.">
-<meta name="theme-color" content="#f6f1ea">
-<meta property="og:title" content="Namari · Catálogo">
-<meta property="og:description" content="As peças novas da Namari. Toque em “Quero essa peça” e fale com a gente.">
+<title>naMari moda feminina · Catálogo</title>
+<meta name="description" content="Catálogo da naMari moda feminina, de Santa Cruz das Palmeiras para o Brasil. Escolha as peças e faça o pedido pelo WhatsApp.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="naMari moda feminina · Catálogo">
+<meta property="og:description" content="Escolha as peças e faça o pedido pelo WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* 🪟 Vitrinista da Namari: lê as peças da Sheila na hora (peça nova entra e esgotada sai sozinha). */
+  /* 🪟 Vitrinista da naMari. Lê as peças da Sheila na hora: peça nova entra e esgotada sai sozinha. */
   :root {
-    --fundo: #f6f1ea; --cartao: #fffdfa; --tinta: #2b2420; --suave: #7a6e66; --linha: #e7ddd2;
-    --marca: #8a5a44; --marca-escura: #6e4533; --chip: #efe6dc; --sombra: 0 1px 2px rgba(60,40,30,.06), 0 6px 18px rgba(60,40,30,.07);
+    --fundo: #ffffff; --texto: #111111; --suave: #6b6b6b; --linha: #e6e6e6; --leve: #f4f4f4;
+    --botao: #111111; --botao-texto: #ffffff; --vermelho: #d0021b;
+    color-scheme: light;
   }
-  * { box-sizing: border-box; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fundo: #111111; --texto: #f2f2f2; --suave: #a3a3a3; --linha: #2c2c2c; --leve: #1c1c1c;
+      --botao: #f2f2f2; --botao-texto: #111111; --vermelho: #ff4d5e; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html { -webkit-text-size-adjust: 100%; }
-  body { margin: 0; background: var(--fundo); color: var(--tinta); font: 15px/1.45 Inter, system-ui, -apple-system, sans-serif; }
-  header { text-align: center; padding: 34px 16px 10px; }
-  .logo { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 46px; letter-spacing: .14em; margin: 0; text-transform: uppercase; }
-  .sub { color: var(--suave); font-size: 13px; letter-spacing: .22em; text-transform: uppercase; margin-top: 2px; }
-  .insta { display: inline-block; margin-top: 10px; color: var(--marca); font-size: 14px; text-decoration: none; }
-  nav { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--fundo) 92%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--linha); }
-  .chips { display: flex; gap: 8px; overflow-x: auto; padding: 12px 16px; scrollbar-width: none; max-width: 1100px; margin: 0 auto; }
-  .chips::-webkit-scrollbar { display: none; }
-  .chip { flex: none; border: 1px solid var(--linha); background: var(--cartao); color: var(--tinta); border-radius: 999px; padding: 8px 16px; font: inherit; font-size: 14px; cursor: pointer; }
-  .chip[aria-pressed="true"] { background: var(--tinta); color: var(--fundo); border-color: var(--tinta); }
-  main { max-width: 1100px; margin: 0 auto; padding: 16px 16px 48px; }
-  .grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-  @media (min-width: 700px) { .grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; } }
+  body { margin: 0; background: var(--fundo); color: var(--texto); font: 16px/1.4 Jost, system-ui, -apple-system, sans-serif; padding-bottom: 84px; }
+  button { font: inherit; color: inherit; }
+  a { color: inherit; }
+
+  header { text-align: center; padding: 28px 16px 14px; }
+  .logo { margin: 0; font-weight: 500; font-size: 44px; letter-spacing: .01em; line-height: 1; }
+  .logo .i { position: relative; display: inline-block; }
+  .logo .i::before { content: "ı"; }
+  .logo .coracao { position: absolute; left: 50%; top: -.02em; width: .36em; transform: translateX(-50%); fill: var(--vermelho); }
+  .moda { font-size: 12px; letter-spacing: .34em; text-transform: uppercase; margin-top: 6px; }
+  .lema { color: var(--suave); font-size: 13.5px; margin-top: 8px; }
+
+  .abas { position: sticky; top: 0; z-index: 10; background: var(--fundo); border-bottom: 1px solid var(--linha); }
+  .rolagem { display: flex; overflow-x: auto; scrollbar-width: none; max-width: 1100px; margin: 0 auto; padding: 0 8px; }
+  .rolagem::-webkit-scrollbar { display: none; }
+  .aba { flex: none; background: none; border: 0; padding: 14px 12px 12px; font-size: 15px; color: var(--suave); border-bottom: 2px solid transparent; cursor: pointer; }
+  .aba[aria-pressed="true"] { color: var(--texto); border-bottom-color: var(--texto); font-weight: 500; }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  .filtro { padding: 16px 0 4px; }
+  .rotulo { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--suave); margin: 0 0 8px; }
+  .opcoes { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
+  .opcoes::-webkit-scrollbar { display: none; }
+  .op { flex: none; background: var(--fundo); border: 1px solid var(--linha); border-radius: 4px; padding: 8px 14px; font-size: 15px; cursor: pointer; }
+  .op[aria-pressed="true"] { background: var(--botao); color: var(--botao-texto); border-color: var(--botao); }
+  .op.preco { font-weight: 600; min-width: 74px; }
+  .op.preco[aria-pressed="false"] { color: var(--vermelho); }
+
+  .grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; padding: 18px 0 32px; }
+  @media (min-width: 700px) { .grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 20px; } }
   @media (min-width: 1000px) { .grade { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-  .peca { background: var(--cartao); border-radius: 14px; overflow: hidden; box-shadow: var(--sombra); display: flex; flex-direction: column; }
-  .foto { aspect-ratio: 4/5; background: var(--chip); border: 0; padding: 0; cursor: zoom-in; display: block; width: 100%; }
-  .foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .info { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-  .nome { font-weight: 500; font-size: 14.5px; margin: 0; }
-  .preco { font-family: "Cormorant Garamond", Georgia, serif; font-size: 22px; font-weight: 600; color: var(--marca-escura); line-height: 1; }
-  .cores { color: var(--suave); font-size: 12.5px; }
-  .tams { display: flex; flex-wrap: wrap; gap: 5px; }
-  .tam { min-width: 34px; border: 1px solid var(--linha); background: transparent; border-radius: 8px; padding: 5px 7px; font: inherit; font-size: 12.5px; color: var(--tinta); cursor: pointer; }
-  .tam[aria-pressed="true"] { background: var(--marca); border-color: var(--marca); color: #fff; }
-  .quero { margin-top: auto; display: block; text-align: center; background: var(--marca); color: #fff; text-decoration: none; border-radius: 10px; padding: 11px 8px; font-weight: 600; font-size: 14px; }
-  .quero:active { background: var(--marca-escura); }
-  .aviso { text-align: center; color: var(--suave); padding: 48px 16px; }
-  .esqueleto .foto, .esqueleto .linha { background: linear-gradient(90deg, var(--chip), #f7f0e8, var(--chip)); background-size: 200% 100%; animation: brilho 1.3s infinite; }
-  .esqueleto .linha { height: 12px; border-radius: 6px; margin: 4px 0; }
-  @keyframes brilho { to { background-position: -200% 0; } }
-  footer { text-align: center; color: var(--suave); font-size: 12.5px; padding: 0 16px 36px; }
-  dialog { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; }
-  dialog::backdrop { background: rgba(20,14,10,.85); }
-  dialog img { max-width: 100vw; max-height: 92vh; display: block; border-radius: 8px; }
-  @media (prefers-reduced-motion: reduce) { .esqueleto .foto, .esqueleto .linha { animation: none; } }
+  .peca { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+  .foto { aspect-ratio: 4/5; background: var(--leve); border: 0; padding: 0; cursor: zoom-in; display: block; width: 100%; overflow: hidden; }
+  .foto img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity .25s; }
+  .foto img.ok { opacity: 1; }
+  .nome { font-weight: 400; font-size: 15px; margin: 2px 0 0; line-height: 1.25; }
+  .valor { color: var(--vermelho); font-weight: 600; font-size: 17px; }
+  .escolha { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tam { min-width: 36px; height: 32px; background: var(--fundo); border: 1px solid var(--linha); border-radius: 4px; padding: 0 8px; font-size: 13.5px; cursor: pointer; }
+  .tam[aria-pressed="true"] { background: var(--botao); color: var(--botao-texto); border-color: var(--botao); }
+  .cor { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--linha); padding: 0; cursor: pointer; position: relative; }
+  .cor[aria-pressed="true"]::after { content: ""; position: absolute; inset: -4px; border: 1.5px solid var(--texto); border-radius: 50%; }
+  .cor.txt { width: auto; height: 26px; border-radius: 4px; padding: 0 8px; font-size: 12.5px; background: var(--fundo); }
+  .cor.txt[aria-pressed="true"] { background: var(--botao); color: var(--botao-texto); border-color: var(--botao); }
+  .cor.txt[aria-pressed="true"]::after { display: none; }
+  .corNome { font-size: 12.5px; color: var(--suave); min-height: 1em; }
+  .add { margin-top: auto; background: var(--botao); color: var(--botao-texto); border: 0; border-radius: 4px; padding: 11px 6px; font-size: 14.5px; font-weight: 500; cursor: pointer; }
+  .add:active { opacity: .85; }
+  .falta { color: var(--vermelho); font-size: 12.5px; min-height: 0; }
+  .treme { animation: treme .3s; }
+  @keyframes treme { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+  .vazio { grid-column: 1 / -1; text-align: center; color: var(--suave); padding: 56px 12px; }
+  .esqueleto .foto { animation: pisca 1.2s infinite alternate; }
+  @keyframes pisca { to { opacity: .5; } }
+
+  footer { border-top: 1px solid var(--linha); text-align: center; padding: 28px 16px 24px; color: var(--suave); font-size: 14px; line-height: 1.7; }
+  footer a { text-decoration: none; color: var(--texto); }
+
+  /* barra da sacola */
+  .barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--fundo); border-top: 1px solid var(--linha); transform: translateY(110%); transition: transform .25s; }
+  .barra.on { transform: none; }
+  .barra button { width: 100%; max-width: 520px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; background: var(--botao); color: var(--botao-texto); border: 0; border-radius: 4px; padding: 14px 16px; font-size: 15.5px; font-weight: 500; cursor: pointer; }
+  .pulo { animation: pulo .35s; }
+  @keyframes pulo { 50% { transform: scale(1.04); } }
+
+  dialog { border: 0; padding: 0; color: var(--texto); background: var(--fundo); }
+  dialog::backdrop { background: rgba(0,0,0,.55); }
+  #zoom { background: transparent; max-width: 100vw; max-height: 100vh; }
+  #zoom::backdrop { background: rgba(0,0,0,.9); }
+  #zoom img { max-width: 100vw; max-height: 92vh; display: block; }
+  #sacola { width: 100%; max-width: 520px; margin: auto auto 0; border-radius: 12px 12px 0 0; max-height: 88vh; display: flex; flex-direction: column; }
+  #sacola:not([open]) { display: none; }
+  @media (min-width: 700px) { #sacola { margin: auto; border-radius: 8px; } }
+  .topo { display: flex; justify-content: space-between; align-items: center; padding: 16px 16px 12px; border-bottom: 1px solid var(--linha); }
+  .topo h2 { margin: 0; font-size: 19px; font-weight: 500; }
+  .fechar { background: none; border: 0; font-size: 26px; line-height: 1; padding: 0 4px; cursor: pointer; }
+  .itens { overflow-y: auto; padding: 4px 16px; flex: 1; }
+  .item { display: grid; grid-template-columns: 56px 1fr auto; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--linha); }
+  .item img { width: 56px; height: 70px; object-fit: cover; background: var(--leve); display: block; }
+  .item .det { font-size: 13px; color: var(--suave); }
+  .qtd { display: flex; align-items: center; border: 1px solid var(--linha); border-radius: 4px; }
+  .qtd button { background: none; border: 0; width: 32px; height: 32px; font-size: 17px; cursor: pointer; }
+  .qtd span { min-width: 18px; text-align: center; font-size: 14px; }
+  .fim { padding: 14px 16px calc(16px + env(safe-area-inset-bottom)); border-top: 1px solid var(--linha); display: grid; gap: 10px; }
+  .total { display: flex; justify-content: space-between; font-size: 17px; }
+  .total b { color: var(--vermelho); }
+  .fim input { width: 100%; font: inherit; font-size: 16px; padding: 12px; border: 1px solid var(--linha); border-radius: 4px; background: var(--fundo); color: var(--texto); }
+  .zap { background: var(--botao); color: var(--botao-texto); border: 0; border-radius: 4px; padding: 14px; font-size: 16px; font-weight: 500; cursor: pointer; }
+  .obs { font-size: 12.5px; color: var(--suave); text-align: center; margin: 0; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 </head>
 <body>
 <header>
-  <h1 class="logo">Namari</h1>
-  <div class="sub">moda feminina</div>
-  <a class="insta" href="https://www.instagram.com/namari_feminino" target="_blank" rel="noopener">@namari_feminino</a>
+  <h1 class="logo" aria-label="naMari">naMar<span class="i"><svg class="coracao" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21.6 10.3 20C4.2 14.5.2 10.9.2 6.5.2 2.9 3 .2 6.6.2c2 0 3.9.9 5.4 2.4C13.5 1.1 15.4.2 17.4.2 21 .2 23.8 2.9 23.8 6.5c0 4.4-4 8-10.1 13.5z"/></svg></span></h1>
+  <div class="moda">moda feminina</div>
+  <div class="lema">De SCP para o Brasil</div>
 </header>
-<nav><div class="chips" id="chips" role="toolbar" aria-label="Categorias"></div></nav>
+
+<nav class="abas"><div class="rolagem" id="abas" aria-label="Seções"></div></nav>
+
 <main>
+  <div id="filtros"></div>
   <div class="grade" id="grade" aria-live="polite"></div>
 </main>
-<footer>Escolha o tamanho e toque em <b>Quero essa peça</b> para falar com a gente.</footer>
-<dialog id="zoom" onclick="this.close()"><img alt=""></dialog>
+
+<footer>
+  <a href="https://www.instagram.com/namari_feminino" target="_blank" rel="noopener">@namari_feminino</a><br>
+  <a href="https://maps.google.com/?q=Av.+XV+de+Novembro,+689,+Santa+Cruz+das+Palmeiras+SP" target="_blank" rel="noopener">Av. XV de Novembro, 689 · Santa Cruz das Palmeiras</a><br>
+  <a href="https://wa.me/5519971060389" target="_blank" rel="noopener">WhatsApp (19) 97106-0389</a>
+</footer>
+
+<div class="barra" id="barra"><button id="abrirSacola"><span id="barraQtd">Sacola</span><span id="barraTotal"></span></button></div>
+
+<dialog id="zoom"><img alt=""></dialog>
+<dialog id="sacola" aria-labelledby="tituloSacola">
+  <div class="topo"><h2 id="tituloSacola">Sua sacola</h2><button class="fechar" data-fechar aria-label="Fechar">×</button></div>
+  <div class="itens" id="itens"></div>
+  <div class="fim">
+    <div class="total"><span>Total</span><b id="total"></b></div>
+    <input id="nome" placeholder="Seu nome" autocomplete="given-name" aria-label="Seu nome">
+    <button class="zap" id="finalizar">Finalizar pelo WhatsApp</button>
+    <p class="obs">Sem pagamento aqui: a gente combina tudo pelo WhatsApp.</p>
+  </div>
+</dialog>
 
 <script>
-  // ---- Configuração (o Vitrinista só lê; quem escreve no quadro é a Sheila) ----
+  // ---------------- Configuração ----------------
   const SHEILA = "https://script.google.com/macros/s/AKfycby_ZSkLAnolCtiirdZykfTug9vQhdynzTBVgZnf3Bnj_dvxfwrv5xqwjGGN735HUuv6/exec?catalogo=1";
-  const WHATSAPP = ""; // número da loja com DDI e DDD, só números (ex.: 5511912345678). Vazio = abre o Direct do Instagram.
-  const INSTAGRAM = "namari_feminino";
+  const WHATSAPP = "5519971060389";
+  const PRECOS_FIXOS = [30, 40, 60, 90];
+  // Abas e as categorias do Carlão que entram em cada uma. As de Roupas aparecem mesmo vazias.
+  const SECOES = [
+    { nome: "Roupas", fixas: ["Blusas", "Vestidos", "Calças", "Saias", "Shorts", "Conjuntos"], precos: true,
+      junta: ["Camisetas", "Camisas", "Macacões", "Casacos", "Moda praia", "Lingerie"] },
+    { nome: "Acessórios", fixas: [], junta: ["Acessórios", "Bolsas", "Mochilas"] },
+    { nome: "Higiene e cuidados", fixas: [], junta: ["Higiene e cuidados"] },
+    { nome: "Sapatos", fixas: [], junta: ["Calçados", "Sapatos"] },
+  ];
+  const CORES = { preto: "#111", preta: "#111", branco: "#fff", branca: "#fff", "off-white": "#f3efe6", offwhite: "#f3efe6",
+    bege: "#d9c5a6", nude: "#e3bfa3", cinza: "#9a9a9a", "azul marinho": "#1f2a4d", marinho: "#1f2a4d", "azul jeans": "#4d6f99",
+    jeans: "#4d6f99", "azul bebê": "#bcd7ee", "azul bebe": "#bcd7ee", "azul claro": "#a9c8e6", azul: "#2f5fa8", lavanda: "#b9a7d6",
+    lilás: "#b79cd1", lilas: "#b79cd1", roxo: "#6a3d8f", rosa: "#ee9fb8", "rosa claro": "#f6c6d4", pink: "#e3457f", vermelho: "#c8102e",
+    vermelha: "#c8102e", vinho: "#6d1a2b", laranja: "#ee7d32", amarelo: "#f0cf43", amarela: "#f0cf43", verde: "#4d8a5b",
+    "verde militar": "#5b6340", "verde água": "#8fd0c3", marrom: "#6e4a32", caramelo: "#b07a45", terracota: "#b8633f", dourado: "#c9a548", prata: "#c0c0c0" };
 
+  // ---------------- Estado ----------------
   const $ = (s) => document.querySelector(s);
-  let pecas = [], categoria = "Tudo";
+  const guardar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+  const ler = (k, padrao) => { try { return JSON.parse(localStorage.getItem(k)) ?? padrao; } catch (e) { return padrao; } };
+  let pecas = [], secao = "Roupas", preco = 0, categoria = "Todas";
+  let sacola = ler("namari-sacola", []);
+  const escolhas = {}; // codigo -> { tam, cor }
 
-  const real = (v) => {
-    const n = typeof v === "number" ? v : parseFloat(String(v).replace(/[^\d,.-]/g, "").replace(/\.(?=\d{3})/g, "").replace(",", "."));
-    return isFinite(n) && n > 0 ? n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) : "";
-  };
-  const tamanhos = (t) => String(t || "").split(/[,/;]| e /).map((x) => x.trim()).filter(Boolean);
+  const num = (v) => typeof v === "number" ? v : parseFloat(String(v || "").replace(/[^\d,.]/g, "").replace(/\.(?=\d{3})/g, "").replace(",", ".")) || 0;
+  const real = (n) => n ? n.toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: n % 1 ? 2 : 0 }) : "";
+  const lista = (t) => String(t || "").split(/,|\/|;| e /).map((x) => x.trim()).filter(Boolean);
   const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const semAcento = (t) => String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const corHex = (c) => CORES[c.toLowerCase()] || CORES[semAcento(c)];
+  const secaoDe = (p) => (SECOES.find((s) => s.fixas.includes(p.categoria) || s.junta.includes(p.categoria)) || SECOES[0]).nome;
 
-  function link(p, tam) {
-    const msg = "Oi! Vi no catálogo da Namari e quero essa peça:\n" + p.nome + " (" + p.codigo + ")" +
-      (real(p.preco) ? " – " + real(p.preco) : "") + (tam ? "\nTamanho: " + tam : "") + "\n" + location.origin + location.pathname + "#" + p.codigo;
-    return WHATSAPP ? "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg) : "https://ig.me/m/" + INSTAGRAM;
+  // ---------------- Desenho ----------------
+  function desenharAbas() {
+    $("#abas").innerHTML = SECOES.map((s) => `<button class="aba" aria-pressed="${s.nome === secao}" data-secao="${esc(s.nome)}">${esc(s.nome)}</button>`).join("");
   }
 
-  function desenharChips() {
-    const cats = ["Tudo", ...new Set(pecas.map((p) => p.categoria))];
-    if (!cats.includes(categoria)) categoria = "Tudo";
-    $("#chips").innerHTML = cats.map((c) => `<button class="chip" aria-pressed="${c === categoria}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
-    $("#chips").style.display = cats.length > 2 ? "" : "none";
+  function desenharFiltros() {
+    const s = SECOES.find((x) => x.nome === secao);
+    const daqui = pecas.filter((p) => secaoDe(p) === secao);
+    let html = "";
+    if (s.precos) {
+      const valores = [...new Set([...PRECOS_FIXOS, ...daqui.map((p) => num(p.preco)).filter(Boolean)])].sort((a, b) => a - b);
+      html += `<div class="filtro"><p class="rotulo">Escolha o valor</p><div class="opcoes">
+        <button class="op" aria-pressed="${!preco}" data-preco="0">Todos</button>
+        ${valores.map((v) => `<button class="op preco" aria-pressed="${preco === v}" data-preco="${v}">${real(v)}</button>`).join("")}</div></div>`;
+    }
+    const base = s.precos && preco ? daqui.filter((p) => num(p.preco) === preco) : daqui;
+    const cats = [...new Set([...s.fixas, ...base.map((p) => p.categoria)])];
+    if (cats.length > 1) {
+      if (!cats.includes(categoria)) categoria = "Todas";
+      html += `<div class="filtro"><p class="rotulo">Categoria</p><div class="opcoes">
+        ${["Todas", ...cats].map((c) => `<button class="op" aria-pressed="${c === categoria}" data-cat="${esc(c)}">${esc(c)}</button>`).join("")}</div></div>`;
+    } else categoria = "Todas";
+    $("#filtros").innerHTML = html;
+  }
+
+  function cartao(p) {
+    const tams = lista(p.tamanhos), cores = lista(p.cores);
+    const e = escolhas[p.codigo] || (escolhas[p.codigo] = { tam: tams.length === 1 ? tams[0] : "", cor: cores.length === 1 ? cores[0] : "" });
+    return `<article class="peca" id="${esc(p.codigo)}">
+      <button class="foto" data-zoom="${esc(p.foto)}" aria-label="Ver foto maior"><img src="${esc(p.foto)}" alt="${esc(p.nome)}" loading="lazy" onload="this.classList.add('ok')"></button>
+      <h2 class="nome">${esc(p.nome)}</h2>
+      <div class="valor">${real(num(p.preco)) || "Consulte"}</div>
+      ${cores.length ? `<div class="escolha" role="group" aria-label="Cor">${cores.map((c) => {
+        const h = corHex(c);
+        return h ? `<button class="cor" style="background:${h}" title="${esc(c)}" aria-label="${esc(c)}" aria-pressed="${e.cor === c}" data-cor="${esc(c)}"></button>`
+                 : `<button class="cor txt" aria-pressed="${e.cor === c}" data-cor="${esc(c)}">${esc(c)}</button>`;
+      }).join("")}</div><div class="corNome">${esc(e.cor || (cores.length > 1 ? "Escolha a cor" : ""))}</div>` : ""}
+      ${tams.length ? `<div class="escolha" role="group" aria-label="Tamanho">${tams.map((t) => `<button class="tam" aria-pressed="${e.tam === t}" data-tam="${esc(t)}">${esc(t)}</button>`).join("")}</div>` : ""}
+      <div class="falta" aria-live="polite"></div>
+      <button class="add" data-add>Adicionar à sacola</button>
+    </article>`;
   }
 
   function desenhar() {
-    const lista = pecas.filter((p) => categoria === "Tudo" || p.categoria === categoria);
-    if (!lista.length) { $("#grade").innerHTML = '<p class="aviso" style="grid-column:1/-1">Peças novas chegando em breve ✨</p>'; return; }
-    $("#grade").innerHTML = lista.map((p) => {
-      const tams = tamanhos(p.tamanhos);
-      return `<article class="peca" id="${esc(p.codigo)}">
-        <button class="foto" data-zoom="${esc(p.foto)}" aria-label="Ver foto maior de ${esc(p.nome)}"><img src="${esc(p.foto)}" alt="${esc(p.nome)}" loading="lazy"></button>
-        <div class="info">
-          <h2 class="nome">${esc(p.nome)}</h2>
-          ${real(p.preco) ? `<div class="preco">${real(p.preco)}</div>` : ""}
-          ${p.cores ? `<div class="cores">${esc(p.cores)}</div>` : ""}
-          ${tams.length ? `<div class="tams" role="group" aria-label="Tamanho">${tams.map((t) => `<button class="tam" aria-pressed="${tams.length === 1}" data-t="${esc(t)}">${esc(t)}</button>`).join("")}</div>` : ""}
-          <a class="quero" href="${esc(link(p, tams.length === 1 ? tams[0] : ""))}" target="_blank" rel="noopener">Quero essa peça</a>
-        </div></article>`;
-    }).join("");
+    desenharAbas(); desenharFiltros();
+    const s = SECOES.find((x) => x.nome === secao);
+    const vis = pecas.filter((p) => secaoDe(p) === secao && (!s.precos || !preco || num(p.preco) === preco) && (categoria === "Todas" || p.categoria === categoria));
+    $("#grade").innerHTML = vis.length ? vis.map(cartao).join("") : '<p class="vazio">Nenhuma peça cadastrada aqui ainda — em breve novidades!</p>';
   }
 
-  document.addEventListener("click", (e) => {
-    const chip = e.target.closest(".chip");
-    if (chip) { categoria = chip.dataset.c; desenharChips(); desenhar(); scrollTo({ top: 0, behavior: "smooth" }); return; }
-    const tam = e.target.closest(".tam");
-    if (tam) {
-      const card = tam.closest(".peca"), p = pecas.find((x) => x.codigo === card.id);
-      card.querySelectorAll(".tam").forEach((b) => b.setAttribute("aria-pressed", b === tam));
-      card.querySelector(".quero").href = link(p, tam.dataset.t);
-      return;
-    }
-    const f = e.target.closest("[data-zoom]");
-    if (f) { const d = $("#zoom"); d.querySelector("img").src = f.dataset.zoom.replace("=w900", "=w1600"); d.showModal(); }
+  // ---------------- Sacola ----------------
+  function salvarSacola() { guardar("namari-sacola", sacola); desenharBarra(); }
+  const totalSacola = () => sacola.reduce((t, i) => t + i.qtd * i.preco, 0);
+  function desenharBarra() {
+    const q = sacola.reduce((t, i) => t + i.qtd, 0);
+    $("#barra").classList.toggle("on", q > 0);
+    $("#barraQtd").textContent = "Ver sacola (" + q + (q === 1 ? " peça)" : " peças)");
+    $("#barraTotal").textContent = real(totalSacola());
+  }
+  function desenharSacola() {
+    $("#itens").innerHTML = sacola.length ? sacola.map((i, n) => `<div class="item">
+      <img src="${esc(i.foto)}" alt="">
+      <div><div>${esc(i.nome)}</div><div class="det">${esc([i.tam, i.cor].filter(Boolean).join(" · "))}${i.preco ? " · " + real(i.preco) : ""}</div></div>
+      <div class="qtd"><button data-menos="${n}" aria-label="Menos">−</button><span>${i.qtd}</span><button data-mais="${n}" aria-label="Mais">+</button></div>
+    </div>`).join("") : '<p class="vazio">Sua sacola está vazia.</p>';
+    $("#total").textContent = real(totalSacola()) || "R$ 0";
+  }
+  function adicionar(card) {
+    const p = pecas.find((x) => x.codigo === card.id), e = escolhas[p.codigo];
+    const faltam = [lista(p.cores).length > 1 && !e.cor && "a cor", lista(p.tamanhos).length > 1 && !e.tam && "o tamanho"].filter(Boolean);
+    const aviso = card.querySelector(".falta");
+    if (faltam.length) { aviso.textContent = "Escolha " + faltam.join(" e "); card.classList.remove("treme"); void card.offsetWidth; card.classList.add("treme"); return; }
+    aviso.textContent = "";
+    const ja = sacola.find((i) => i.codigo === p.codigo && i.tam === e.tam && i.cor === e.cor);
+    if (ja) ja.qtd++; else sacola.push({ codigo: p.codigo, nome: p.nome, foto: p.foto, preco: num(p.preco), tam: e.tam, cor: e.cor, qtd: 1 });
+    salvarSacola();
+    const b = card.querySelector("[data-add]"); b.textContent = "Adicionada ✓";
+    setTimeout(() => (b.textContent = "Adicionar à sacola"), 1400);
+    $("#barra button").classList.remove("pulo"); void $("#barra").offsetWidth; $("#barra button").classList.add("pulo");
+  }
+  function finalizar() {
+    const nome = $("#nome").value.trim();
+    if (!sacola.length) return;
+    if (!nome) { $("#nome").focus(); $("#nome").classList.add("treme"); setTimeout(() => $("#nome").classList.remove("treme"), 400); return; }
+    guardar("namari-nome", nome);
+    const linhas = sacola.map((i) => `• ${i.qtd}x ${i.nome}${i.tam ? " – Tam. " + i.tam : ""}${i.cor ? " – " + i.cor : ""} – ${real(i.preco * i.qtd) || "a consultar"}`);
+    const msg = "Olá! Quero fazer um pedido pelo catálogo 🛍️\n\n" + linhas.join("\n") + "\n\nTotal: " + real(totalSacola()) + "\nNome: " + nome;
+    window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg), "_blank");
+  }
+
+  // ---------------- Toques ----------------
+  document.addEventListener("click", (ev) => {
+    const t = ev.target.closest("button"); if (!t) return;
+    const card = t.closest(".peca");
+    if (t.dataset.secao) { secao = t.dataset.secao; preco = 0; categoria = "Todas"; desenhar(); return; }
+    if (t.dataset.preco !== undefined) { preco = +t.dataset.preco; desenhar(); return; }
+    if (t.dataset.cat) { categoria = t.dataset.cat; desenhar(); return; }
+    if (t.dataset.tam && card) { escolhas[card.id].tam = t.dataset.tam; card.querySelectorAll("[data-tam]").forEach((b) => b.setAttribute("aria-pressed", b === t)); card.querySelector(".falta").textContent = ""; return; }
+    if (t.dataset.cor && card) { escolhas[card.id].cor = t.dataset.cor; card.querySelectorAll("[data-cor]").forEach((b) => b.setAttribute("aria-pressed", b === t)); card.querySelector(".corNome").textContent = t.dataset.cor; card.querySelector(".falta").textContent = ""; return; }
+    if (t.hasAttribute("data-add")) { adicionar(card); return; }
+    if (t.dataset.zoom) { const d = $("#zoom"); d.querySelector("img").src = t.dataset.zoom.replace("=w900", "=w1600"); d.showModal(); return; }
+    if (t.id === "abrirSacola") { desenharSacola(); $("#sacola").showModal(); return; }
+    if (t.hasAttribute("data-fechar")) { $("#sacola").close(); return; }
+    if (t.dataset.mais) { sacola[+t.dataset.mais].qtd++; salvarSacola(); desenharSacola(); return; }
+    if (t.dataset.menos) { const i = +t.dataset.menos; if (--sacola[i].qtd <= 0) sacola.splice(i, 1); salvarSacola(); desenharSacola(); if (!sacola.length) $("#sacola").close(); return; }
+    if (t.id === "finalizar") { finalizar(); return; }
   });
+  // tocar fora fecha a foto e a sacola
+  ["zoom", "sacola"].forEach((id) => $("#" + id).addEventListener("click", (e) => { if (e.target.id === id) e.target.close(); }));
+  $("#nome").value = ler("namari-nome", "");
 
   async function carregar() {
-    $("#grade").innerHTML = Array.from({ length: 4 }, () => '<div class="peca esqueleto"><div class="foto"></div><div class="info"><div class="linha"></div><div class="linha" style="width:50%"></div></div></div>').join("");
+    desenharAbas();
+    $("#grade").innerHTML = Array.from({ length: 4 }, () => '<div class="peca esqueleto"><div class="foto"></div></div>').join("");
     try {
-      const r = await fetch(SHEILA, { cache: "no-store" });
-      const d = await r.json();
+      const d = await (await fetch(SHEILA, { cache: "no-store" })).json();
       pecas = d.pecas || [];
-      desenharChips(); desenhar();
-      if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView({ block: "center" });
+      // tira da sacola o que esgotou
+      sacola = sacola.filter((i) => pecas.some((p) => p.codigo === i.codigo));
+      salvarSacola();
+      const alvo = location.hash && pecas.find((p) => p.codigo === location.hash.slice(1));
+      if (alvo) secao = secaoDe(alvo);
+      desenhar();
+      if (alvo) document.getElementById(alvo.codigo)?.scrollIntoView({ block: "center" });
     } catch (err) {
-      $("#grade").innerHTML = '<p class="aviso" style="grid-column:1/-1">Não consegui carregar as peças agora. <a href="" style="color:var(--marca)">Tentar de novo</a></p>';
+      $("#grade").innerHTML = '<p class="vazio">Não consegui carregar as peças agora. <a href="">Tentar de novo</a></p>';
     }
   }
   carregar();
